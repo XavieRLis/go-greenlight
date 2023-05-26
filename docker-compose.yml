@@ -12,6 +12,18 @@ services:
       - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+  mailtrap:
+    image: eaudeweb/mailtrap
+    environment:
+      POSTGRES_USER: "greenlight"
+      POSTGRES_PASSWORD: "greenlight"
+      POSTGRES_DB: "greenlight"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "8081:80"
+      - "2525:25"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
   pgdata:
